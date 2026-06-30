@@ -295,12 +295,12 @@ func TestHumanize(t *testing.T) {
 		{0, "just now"},
 		{-30 * time.Second, "30 seconds ago"},
 		{-2 * time.Minute, "2 minutes ago"},
-		{-2 * time.Hour, "2 hours ago"},
+		{-5 * time.Hour, "5 hours ago"},
 		{-3 * Day, "3 days ago"},
 		{-2 * Week, "2 weeks ago"},
 		{-2 * Month, "2 months ago"},
 		{-2 * Year, "2 years ago"},
-		{2 * time.Hour, "in 2 hours"},
+		{5 * time.Hour, "in 5 hours"},
 	}
 	for _, c := range cases {
 		if got := New(time.Now().Add(c.offset)).Humanize(); got != c.want {

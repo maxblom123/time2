@@ -1,7 +1,7 @@
 # time2
 
 ![CI](https://github.com/maxblom123/time2/actions/workflows/ci.yml/badge.svg)
-![Go Version](https://img.shields.io/badge/go-1.21+-00ADD8?logo=go)
+![Go Version](https://img.shields.io/badge/go-1.26.4+-00ADD8?logo=go)
 ![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
@@ -45,7 +45,7 @@ Beyond formatting, the standard library has no concept of a business day, no hum
 go get github.com/maxblom123/time2
 ```
 
-Requires Go 1.21 or later.
+Requires Go 1.26.4 or later.
 
 ---
 
