@@ -1,5 +1,10 @@
 # time2
 
+![CI](https://github.com/maxblom123/time2/actions/workflows/ci.yml/badge.svg)
+![Go Version](https://img.shields.io/badge/go-1.21+-00ADD8?logo=go)
+![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 A production-grade companion to Go's standard `time` package. Built out of frustration with Go's reference-time formatting, missing duration constants, and the absence of any humanization layer — `time2` fills those gaps without replacing anything. Every `time.Time` method is still available; `time2` only adds.
 
 ```go
@@ -49,12 +54,12 @@ Requires Go 1.21 or later.
 ### Constructors
 
 ```go
-time2.Now()                                        // current local time
-time2.New(t time.Time)                             // wrap an existing time.Time
-time2.From(2026, time.June, 30)                    // date only, midnight local
-time2.FromDateTime(2026, time.June, 30, 14, 0, 0)  // full datetime
-time2.Parse("June 30, 2026")                       // automatic layout detection
-time2.MustParse("2026-06-30")                      // panics on failure
+time2.Now()                                         // current local time
+time2.New(t time.Time)                              // wrap an existing time.Time
+time2.From(2026, time.June, 30)                     // date only, midnight local
+time2.FromDateTime(2026, time.June, 30, 14, 0, 0)   // full datetime
+time2.Parse("June 30, 2026")                        // automatic layout detection
+time2.MustParse("2026-06-30")                       // panics on failure
 ```
 
 All constructors return `time2.T`, which embeds `time.Time` — every standard library method works without any conversion.
@@ -65,28 +70,28 @@ All constructors return `time2.T`, which embeds `time.Time` — every standard l
 
 `time2` uses a pattern-based layout system instead of Go's reference time. Patterns are case-sensitive and composable.
 
-| Token | Output | Example |
-|-------|--------|---------|
-| `YYYY` | 4-digit year | `2026` |
-| `YY` | 2-digit year | `26` |
-| `MMMM` | Full month name | `June` |
-| `MMM` | Short month name | `Jun` |
-| `MM` | Zero-padded month | `06` |
-| `DD` | Zero-padded day | `30` |
-| `HH` | 24-hour hour | `14` |
-| `hh` | 12-hour hour | `02` |
-| `mm` | Minutes | `05` |
-| `ss` | Seconds | `09` |
-| `A` | AM/PM | `PM` |
-| `dddd` | Full weekday | `Monday` |
-| `ddd` | Short weekday | `Mon` |
+| Token  | Output            | Example  |
+|--------|-------------------|----------|
+| `YYYY` | 4-digit year      | `2026`   |
+| `YY`   | 2-digit year      | `26`     |
+| `MMMM` | Full month name   | `June`   |
+| `MMM`  | Short month name  | `Jun`    |
+| `MM`   | Zero-padded month | `06`     |
+| `DD`   | Zero-padded day   | `30`     |
+| `HH`   | 24-hour hour      | `14`     |
+| `hh`   | 12-hour hour      | `02`     |
+| `mm`   | Minutes           | `05`     |
+| `ss`   | Seconds           | `09`     |
+| `A`    | AM/PM             | `PM`     |
+| `dddd` | Full weekday      | `Monday` |
+| `ddd`  | Short weekday     | `Mon`    |
 
 ```go
 t := time2.From(2026, time.June, 30)
 
-t.Format("YYYY-MM-DD")               // "2026-06-30"
-t.Format("dddd, MMMM DD YYYY")       // "Tuesday, June 30 2026"
-t.Format("DD/MM/YYYY")               // "30/06/2026"
+t.Format("YYYY-MM-DD")            // "2026-06-30"
+t.Format("dddd, MMMM DD YYYY")    // "Tuesday, June 30 2026"
+t.Format("DD/MM/YYYY")            // "30/06/2026"
 ```
 
 **Presets**
@@ -172,11 +177,11 @@ t.StartOfYear()   // January 1st at 00:00:00
 ### Humanization
 
 ```go
-time2.Now().Humanize()                          // "just now"
-time2.New(time.Now().Add(-90*time.Second)).Humanize()  // "1 minute ago"
-time2.New(time.Now().Add(-2*time.Hour)).Humanize()     // "2 hours ago"
-time2.New(time.Now().Add(-3*time2.Day)).Humanize()     // "3 days ago"
-time2.New(time.Now().Add(24*time.Hour)).Humanize()     // "in 1 day"
+time2.Now().Humanize()                                         // "just now"
+time2.New(time.Now().Add(-90*time.Second)).Humanize()          // "1 minute ago"
+time2.New(time.Now().Add(-2*time.Hour)).Humanize()             // "2 hours ago"
+time2.New(time.Now().Add(-3*time2.Day)).Humanize()             // "3 days ago"
+time2.New(time.Now().Add(24*time.Hour)).Humanize()             // "in 1 day"
 
 t.FromNow()    // alias for Humanize()
 t.DaysSince()  // integer count of days elapsed since t
