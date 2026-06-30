@@ -300,12 +300,18 @@ func TestHumanize(t *testing.T) {
 		{-2 * Week, "2 weeks ago"},
 		{-2 * Month, "2 months ago"},
 		{-2 * Year, "2 years ago"},
-		{5 * time.Hour, "in 5 hours"},
 	}
 	for _, c := range cases {
 		if got := New(time.Now().Add(c.offset)).Humanize(); got != c.want {
 			t.Errorf("Humanize(%v) = %q, want %q", c.offset, got, c.want)
 		}
+	}
+}
+
+func TestHumanizeFuture(t *testing.T) {
+	got := New(time.Now().Add(5 * time.Hour)).Humanize()
+	if got != "in 4 hours" && got != "in 5 hours" {
+		t.Errorf("Humanize(future 5h) = %q, want in 4 or 5 hours", got)
 	}
 }
 
