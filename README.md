@@ -5,7 +5,7 @@
 ![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-A production-grade companion to Go's standard `time` package. Built out of frustration with Go's reference-time formatting, missing duration constants, and the absence of any humanization layer — `time2` fills those gaps without replacing anything. Every `time.Time` method is still available; `time2` only adds.
+A production-grade companion to Go's standard `time` package. Built out of frustration with Go's reference-time formatting, missing duration constants, and the absence of any humanization layer, `time2` fills those gaps without replacing anything. Every `time.Time` method is still available; `time2` only adds.
 
 ```go
 t := time2.Now()
