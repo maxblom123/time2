@@ -229,7 +229,7 @@ t.OffsetHours()                    // UTC offset as integer, e.g. +2 or -5
 ## Design decisions
 
 **`T` embeds `time.Time` rather than wrapping it.**
-This means `time2.T` satisfies any interface that accepts `time.Time` methods and requires no conversion when passing values to standard library functions. The tradeoff is that `Format` shadows `time.Time.Format` — callers who need Go's reference-time formatting can access it via `t.Time.Format(layout)`.
+This means `time2.T` satisfies any interface that accepts `time.Time` methods and requires no conversion when passing values to standard library functions. The tradeoff is that `Format` shadows `time.Time.Format`, callers who need Go's reference-time formatting can access it via `t.Time.Format(layout)`.
 
 **No external dependencies.**
 The module graph is exactly one node. There is nothing to audit, nothing to update, nothing that can introduce a vulnerability through a transitive dependency.
