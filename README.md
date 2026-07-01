@@ -31,9 +31,9 @@ t.Format("2006-01-02 15:04:05")
 t.Format("YYYY-MM-DD HH:mm:ss")
 ```
 
-The reference-time approach (`Mon Jan 2 15:04:05 MST 2006`) is clever in theory — each field maps to a unique value — but it is a source of constant bugs in practice. Developers copy-paste layouts from Stack Overflow, misremember whether month is `01` or `1`, and spend time reading documentation that should be unnecessary.
+The reference-time approach (`Mon Jan 2 15:04:05 MST 2006`) is clever in theory, each field maps to a unique value, but it is a source of constant bugs in practice. Developers copy-paste layouts from Stack Overflow, misremember whether month is `01` or `1`, and spend time reading documentation that should be unnecessary.
 
-Beyond formatting, the standard library has no concept of a business day, no humanized duration output, no multi-layout parser, and no convenience constants for `Day`, `Week`, or `Month`. These are not exotic requirements — they appear in virtually every production application that does anything with time.
+Beyond formatting, the standard library has no concept of a business day, no humanized duration output, no multi-layout parser, and no convenience constants for `Day`, `Week`, or `Month`. These are not exotic requirements, they appear in virtually every production application that does anything with time.
 
 `time2` is an honest attempt to fix that with zero dependencies and 100% test coverage.
 
@@ -62,7 +62,7 @@ time2.Parse("June 30, 2026")                        // automatic layout detectio
 time2.MustParse("2026-06-30")                       // panics on failure
 ```
 
-All constructors return `time2.T`, which embeds `time.Time` — every standard library method works without any conversion.
+All constructors return `time2.T`, which embeds `time.Time`, every standard library method works without any conversion.
 
 ---
 
